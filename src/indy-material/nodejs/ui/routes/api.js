@@ -11,6 +11,10 @@ router.post('/send_message', auth.isLoggedIn, async function (req, res) {
     let message = JSON.parse(req.body.message);
     message.did = req.body.did;
 
+    console.log('DID:' + did);
+    console.log('req.body.message' + req.body.message);
+    
+
     await indy.crypto.sendAnonCryptedMessage(req.body.did, message);
     res.redirect('/#messages');
 });
@@ -25,6 +29,13 @@ router.post('/send_connection_request', auth.isLoggedIn, async function (req, re
 
 router.post('/issuer/create_schema', auth.isLoggedIn, async function (req, res) {
     await indy.issuer.createSchema(req.body.name_of_schema, req.body.version, req.body.attributes);
+    console.log('\n=========== POST /issuer/create_schema ===================\n');
+    console.log('req.body.name_of_schame: '+ req.body.name_of_schema); 
+    console.log('\n');
+    console.log('req.body.version: '+ req.body.version);
+    console.log('\n');
+    console.log('req.body.attributes: '+ req.body.attributes);
+    console.log('\n=========================================================\n');
     res.redirect('/#issuing');
 });
 
@@ -73,6 +84,9 @@ router.post('/messages/delete', auth.isLoggedIn, function(req, res) {
 });
 
 router.post('/proofs/accept', auth.isLoggedIn, async function(req, res) {
+        console.log("\n==================== POST api/proofs/accept ===================");
+        console.log("messageId:"+req.body.messageId);
+        console.log("\n===============================================================");
         await indy.proofs.acceptRequest(req.body.messageId);
         res.redirect('/#messages');
 });

@@ -123,10 +123,10 @@ services:
       - ICON_SRC=https://maxcdn.icons8.com/Share/icon/Users/person_female1600.png
       - THEME=DarkGray
       - PORT=3000
-      - NAME=Alice
-      - EMAIL=alice@faber.edu
+      - NAME=Naufal
+      - EMAIL=naufal@islab.re.kr
       - PASSWORD=123
-      - USERNAME=alice
+      - USERNAME=naufal
       - PUBLIC_DID_ENDPOINT=173.17.0.150:3000
       - RUST_LOG=${RUST_LOG}
       - TEST_POOL_IP=${TEST_POOL_IP}

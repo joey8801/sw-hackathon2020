@@ -27,28 +27,43 @@ exports.getProofRequests = async function(force) {
             },
             requested_predicates: {}
         };
-        let transcriptCredDef = await indy.issuer.getCredDefByTag('MyTranscript');
+        // let transcriptCredDef = await indy.issuer.getCredDefByTag('MyTranscript');
+        // if(transcriptCredDef) {
+        //     proofRequests['Transcript-Data'] = {
+        //         name: 'Transcript-Data',
+        //         version: '0.1',
+        //         requested_attributes: {
+        //             'attr1_referent': {
+        //                 'name': 'degree',
+        //                 'restrictions': [{'cred_def_id': transcriptCredDef.id}]
+        //             },
+        //             'attr2_referent': {
+        //                 'name': 'status',
+        //                 'restrictions': [{'cred_def_id': transcriptCredDef.id}]
+        //             },
+        //             'attr3_referent': {
+        //                 'name': 'year',
+        //                 'restrictions': [{'cred_def_id': transcriptCredDef.id}]
+        //             }
+        //         },
+        //         requested_predicates: {}
+        //     }
+        // }
+        let transcriptCredDef = await indy.issuer.getCredDefByTag('Jitsi');
         if(transcriptCredDef) {
-            proofRequests['Transcript-Data'] = {
-                name: 'Transcript-Data',
-                version: '0.1',
+            proofRequests['Face-Data'] = {
+                name: 'Face-Data',
+                version: '1.3',
                 requested_attributes: {
                     'attr1_referent': {
-                        'name': 'degree',
-                        'restrictions': [{'cred_def_id': transcriptCredDef.id}]
-                    },
-                    'attr2_referent': {
-                        'name': 'status',
-                        'restrictions': [{'cred_def_id': transcriptCredDef.id}]
-                    },
-                    'attr3_referent': {
-                        'name': 'year',
+                        'name': 'vector',
                         'restrictions': [{'cred_def_id': transcriptCredDef.id}]
                     }
                 },
                 requested_predicates: {}
             }
         }
+
     }
     return proofRequests;
 };
