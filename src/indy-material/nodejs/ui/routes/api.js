@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const indy = require('../../indy/index');
 const auth = require('../authentication');
+const did = require('../../indy/src/did');
 
 router.get('/', function (req, res, next) {
     res.send("Success");
@@ -109,5 +110,29 @@ router.post('/proofs/validate', auth.isLoggedIn, async function(req, res) {
         res.status(500).send();
     }
 });
+
+router.get('/proofs/reqtype', async function(req, res, next) {
+    let proofRequests = await indy.proofs.getProofRequests(true);
+    console.log(proofRequests);
+    res.send(proofRequests['Face-Data']);
+});
+
+router.get('/proofs/theirdid', async function(req, res, next) {
+    let relationships = await indy.pairwise.getAll();
+    console.log(relationships);
+    res.send(relationships[0].their_did);
+});
+
+router.get('/proofs/jitsidid', async function(req, res, next) {
+    let endpointDid = await did.getEndpointDid(); // Creates it if it doesn't exist
+    res.send(endpointDid);
+});
+
+router.get('/proofs/data', async function(req, res, next) {
+    let relationships = await indy.pairwise.getAll();
+    console.log(relationships[0].metadata.proofs[1]);
+    res.send(relationships[0].metadata.proofs[1].requested_proof.revealed_attrs.attr1_referent.raw);
+});
+
 
 module.exports = router;

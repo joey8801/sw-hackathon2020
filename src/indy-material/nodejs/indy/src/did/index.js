@@ -27,6 +27,7 @@ exports.getEndpointDid = async function() {
             await exports.createEndpointDid();
         }
     }
+    // console.log('\ngetEndpointDid:'+endpointDid);
     return endpointDid;
 };
 
@@ -75,6 +76,7 @@ exports.getEndpointDidAttribute = async function (attribute) {
 exports.getTheirEndpointDid = async function (theirDid) {
     let pairwise = await sdk.getPairwise(await indy.wallet.get(), theirDid);
     let metadata = JSON.parse(pairwise.metadata);
+    console.log('\ngetTheirEndpointDid:'+metadata.theirEndpointDid);
     return metadata.theirEndpointDid;
 };
 

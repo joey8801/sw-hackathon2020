@@ -20,10 +20,19 @@ exports.handlers = require('./handlers');
 
 exports.prepareRequest = async function (theirEndpointDid) {
     let [myNewDid, myNewVerkey] = await sdk.createAndStoreMyDid(await indy.wallet.get(), {});
+    console.log('\n myNewDid: ' + myNewDid);
+    console.log(' myNewVerkey: ' + myNewVerkey);
+    console.log('\n');
+    
     await indy.pool.sendNym(await indy.pool.get(), await indy.wallet.get(), await indy.did.getEndpointDid(), myNewDid, myNewVerkey);
 
     let nonce = uuid();
     indy.store.pendingRelationships.write(myNewDid, theirEndpointDid, nonce);
+
+    console.log('\n myNewDid2: ' + myNewDid);
+    console.log('\n theirEndpointDid: ' + theirEndpointDid);
+    console.log('\n nonce: ' + nonce);
+
 
     return {
         type: MESSAGE_TYPES.REQUEST,
