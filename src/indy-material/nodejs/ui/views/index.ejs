@@ -188,12 +188,14 @@
             <% include relationships.ejs %>
             <% include messages.ejs %>
         </div>
-        <footer class="footers" style="position:fixed;bottom:0;background: rgb(178, 207, 207);width: 100%;display:grid;grid-template-columns:50% 50%;grid-template-columns:50% 50%align-content:center">
+        <footer class="footers" style="position:fixed;bottom:0;background: rgb(178, 207, 207);width: 100%;display:grid;grid-template-columns:55% 45%;grid-template-columns:50% 50%align-content:center">
             <div class="footer-did">
-                <p align="right" style="text-align: right;color: black;">My Endpoint DID: <%=endpointDid%></p>
+                <h3 align="right" style="text-align: right;color: black;">My Endpoint DID: <%=endpointDid%></></h3>
             </div>
             <div class="footer-logo">
-                <img src="https://github.com/joey8801/img/blob/master/foot_logo.png?raw=true" alt="footer logo" align="right" style="text-align:center;width:60%">
+                <center>
+                    <img src="https://github.com/joey8801/img/blob/master/foot_logo.png?raw=true" alt="footer logo" align="right" style="text-align:center;width:600px">
+                </center>
             </div>
         </footer>
         <script>
