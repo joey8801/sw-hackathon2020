@@ -8,6 +8,7 @@ const MESSAGE_TYPES = {
     CREDENTIAL: "urn:sovrin:agent:message_type:sovrin.org/credential"
 };
 exports.MESSAGE_TYPES = MESSAGE_TYPES;
+exports.emb_vector = "QzukPes1F71QDmW+RljfvMdaXr3MX8C80xUrPJZPMjvvO128tn4xvVawVby9HaO8petPvTC5d76K30Y9W1oUPXI2Rj23JMa9DSh/vOktVb2HacK9QyG7PK2AJ77+mji9SQyQvSf3AD3B5jw8oe5rPteaYb0IeWk9HvtUPLgT9T3xVmy926U5vhPaSD2lEEw8pVs4vp+isjtzx1Q+Ht8hPSbTr7316+I8iB91vUVOHr4c0RQ+vWByu9wfXz3ylIo8cAbEvdFVqz2RziW911dIPQ06sD1V5jO85pfsPI7Imz1QUe69rqejPKATuTxhYaq9RF2nvdl/Ab7bTsw80zlmvKuN1j2O5ug9rBXePYed57sJIae7xgj3vRCLND1OvpC9AffKPN4P3r3GM7m8XAm5PYsM9b35cBk+Yp1yvMuxgDsTyd07s3IjvBAVHr3vBZi8B2+vPa5TMb6VIYu9FNimvb0D/7xmxB89bD41Pi7GtL21qvW9LF5pPeK4u71o55k98Tn1vXmejbtYQQu+7blCPeUwHr0llzs9Pi4uPqZNq739Fhu+854QPJdQHD20YNw9KqtxvP1IqT2ciU49MIjrPa4EnLwW8bM82l6NPV31mT0zjV29qH22Pcs9OL2gc/S8uAW8PUabYj0yHQU+YZqbPDBBLDzw9f+9/3aFvQ40Qr4=";
 
 exports.handlers = require('./handlers');
 
@@ -76,7 +77,7 @@ exports.acceptRequest = async function(theirDid, encryptedMessage) {
                 value = "4.5";
                 break;
             case "vector":
-                value = "QzukPes1F71QDmW+RljfvMdaXr3MX8C80xUrPJZPMjvvO128tn4xvVawVby9HaO8petPvTC5d76K30Y9W1oUPXI2Rj23JMa9DSh/vOktVb2HacK9QyG7PK2AJ77+mji9SQyQvSf3AD3B5jw8oe5rPteaYb0IeWk9HvtUPLgT9T3xVmy926U5vhPaSD2lEEw8pVs4vp+isjtzx1Q+Ht8hPSbTr7316+I8iB91vUVOHr4c0RQ+vWByu9wfXz3ylIo8cAbEvdFVqz2RziW911dIPQ06sD1V5jO85pfsPI7Imz1QUe69rqejPKATuTxhYaq9RF2nvdl/Ab7bTsw80zlmvKuN1j2O5ug9rBXePYed57sJIae7xgj3vRCLND1OvpC9AffKPN4P3r3GM7m8XAm5PYsM9b35cBk+Yp1yvMuxgDsTyd07s3IjvBAVHr3vBZi8B2+vPa5TMb6VIYu9FNimvb0D/7xmxB89bD41Pi7GtL21qvW9LF5pPeK4u71o55k98Tn1vXmejbtYQQu+7blCPeUwHr0llzs9Pi4uPqZNq739Fhu+854QPJdQHD20YNw9KqtxvP1IqT2ciU49MIjrPa4EnLwW8bM82l6NPV31mT0zjV29qH22Pcs9OL2gc/S8uAW8PUabYj0yHQU+YZqbPDBBLDzw9f+9/3aFvQ40Qr4=";
+                value = indy.credentials.emb_vector;
                 break;
             default:
                 value = "someValue";

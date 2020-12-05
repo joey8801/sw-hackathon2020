@@ -37,7 +37,7 @@
         </div>
         <div class="w3-container w3-card w3-padding w3-margin">
             <h3>Send Credential Offer</h3>
-            <form method="POST" action="/api/issuer/send_credential_offer">
+            <form method="POST" action="/api/issuer/send_credential_offer" enctype="multipart/form-data">
                 <label>Relationship: </label>
                 <select class="w3-select" name="their_relationship_did" required>
                     <%for(let relationship of relationships) {%>
@@ -52,6 +52,7 @@
                     <%}%>
                 </select>
                 <br><br>
+                <input type="file" name="file">
                 <input class="w3-btn w3-white w3-border" type="submit">
             </form>
         </div>
