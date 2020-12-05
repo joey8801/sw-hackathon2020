@@ -1,12 +1,12 @@
 <div id="relationships" class="tab" style="display:none;" >
-    <button class="w3-right w3-btn w3-white w3-border" style="margin:15px 20px;" onclick="document.getElementById('newRelationshipModel').style.display='block'">Send New Connection Request</button>
+    <button class="w3-right w3-btn w3-teal w3-border" style="margin:15px 20px;" onclick="document.getElementById('newRelationshipModel').style.display='block'">Send New Connection Request</button>
     <div class="w3-padding">
-        <div class="w3-third w3-border" style="width:33%; height:85vh; overflow:scroll;">
+        <div class="w3-third w3-border" style="width:33%; height:85vh; padding:3px; overflow:scroll;">
             <%for(let relationship of relationships) {%>
             <a onclick="showDiv('<%=relationship.their_did%>', 'relationshipsClass')">
                 <div class="w3-bar w3-btn w3-white w3-border" style="width:100%;">
                     <svg class="w3-bar-item" width="70" height="70" data-jdenticon-value="<%=relationship.their_did%>"></svg>
-                    <p class="w3-bar-item"><%=relationship.metadata.name%></p>
+                    <h4 class="w3-bar-item" style="text-align: center;color: white;"><%=relationship.metadata.name%></h4>
                 </div>
             </a>
             <br>
@@ -14,7 +14,7 @@
         </div>
         <%for(let relationship of relationships) {%>
             <div id="<%=relationship.their_did%>" class="w3-padding relationshipsClass" style="float:left;width:66%;margin-bottom: 100px;display:none;">
-                <div class="w3-border w3-container" style="margin:10px 50px;">
+                <div class="w3-border w3-container" style="margin:15x 20px;">
                     <div class="w3-cell-middle" style="display: block;margin: auto;">
                         <svg width="320" height="320" data-jdenticon-value="<%=relationship.their_did%>"></svg>
                     </div>

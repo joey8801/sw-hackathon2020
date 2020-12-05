@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 networks:
   services:
@@ -15,7 +15,7 @@ services:
     build:
       context: .
       dockerfile: pool.dockerfile
-    command: 'bash -c ''./scripts/start_webserver.sh'''
+    command: "bash -c './scripts/start_webserver.sh'"
     environment:
       - IP=173.17.0.101
       - IPS=173.17.0.101,173.17.0.102,173.17.0.103,173.17.0.104
@@ -44,7 +44,7 @@ services:
   #
   node1:
     image: indy-node
-    command: 'bash -c ''./scripts/start_node.sh 1'''
+    command: "bash -c './scripts/start_node.sh 1'"
     networks:
       services:
         ipv4_address: 173.17.0.101
@@ -54,14 +54,14 @@ services:
     environment:
       - IP=173.17.0.101
       - IPS=173.17.0.101,173.17.0.102,173.17.0.103,173.17.0.104
-#      - HOST=173.17.0.101
+      #      - HOST=173.17.0.101
       - RUST_LOG=${RUST_LOG}
     volumes:
       - node1-data:/home/indy/ledger
 
   node2:
     image: indy-node
-    command: 'bash -c ''./scripts/start_node.sh 2'''
+    command: "bash -c './scripts/start_node.sh 2'"
     networks:
       services:
         ipv4_address: 173.17.0.102
@@ -72,13 +72,13 @@ services:
       - IP=173.17.0.101
       - IPS=173.17.0.101,173.17.0.102,173.17.0.103,173.17.0.104
       - RUST_LOG=${RUST_LOG}
-#      - HOST=173.17.0.102
+    #      - HOST=173.17.0.102
     volumes:
       - node2-data:/home/indy/ledger
 
   node3:
     image: indy-node
-    command: 'bash -c ''./scripts/start_node.sh 3'''
+    command: "bash -c './scripts/start_node.sh 3'"
     networks:
       services:
         ipv4_address: 173.17.0.103
@@ -88,14 +88,14 @@ services:
     environment:
       - IP=173.17.0.101
       - IPS=173.17.0.101,173.17.0.102,173.17.0.103,173.17.0.104
-#      - HOST=173.17.0.103
+      #      - HOST=173.17.0.103
       - RUST_LOG=${RUST_LOG}
     volumes:
       - node3-data:/home/indy/ledger
 
   node4:
     image: indy-node
-    command: 'bash -c ''./scripts/start_node.sh 4'''
+    command: "bash -c './scripts/start_node.sh 4'"
     networks:
       services:
         ipv4_address: 173.17.0.104
@@ -105,7 +105,7 @@ services:
     environment:
       - IP=173.17.0.101
       - IPS=173.17.0.101,173.17.0.102,173.17.0.103,173.17.0.104
-#      - HOST=173.17.0.104
+      #      - HOST=173.17.0.104
       - RUST_LOG=${RUST_LOG}
     volumes:
       - node4-data:/home/indy/ledger
@@ -113,15 +113,15 @@ services:
   #
   # Agents
   #
-  alice:
+  naufal:
     image: indy-agentjs
     build:
       context: .
       dockerfile: agent.dockerfile
     command: "bash -c 'sleep 10; npm start'"
     environment:
-      - ICON_SRC=https://maxcdn.icons8.com/Share/icon/Users/person_female1600.png
-      - THEME=DarkGray
+      - ICON_SRC=https://github.com/joey8801/img/blob/master/mist2.png?raw=true
+      - THEME=teal
       - PORT=3000
       - NAME=Naufal
       - EMAIL=naufal@islab.re.kr
@@ -145,18 +145,18 @@ services:
 
   #
   #
-  bob:
+  shinwook:
     image: indy-agentjs
     command: "bash -c 'sleep 10; npm start'"
     environment:
-      - ICON_SRC=http://www.clker.com/cliparts/g/l/R/7/h/u/teamstijl-person-icon-blue-hi.png
-      - THEME=BurlyWood
+      - ICON_SRC=https://github.com/joey8801/img/blob/master/mist2.png?raw=true
+      - THEME=teal
       - PORT=3001
-      - NAME=Bob
-      - EMAIL=bob@byu.edu
+      - NAME=Shinwook
+      - EMAIL=shinwook@pusan.ac.kr
       - PASSWORD=123
-      - USERNAME=bob
-      - PUBLIC_DID_ENDPOINT=173.17.0.160:3001
+      - USERNAME=shinwook
+      - PUBLIC_DID_ENDPOINT=173.17.0.150:3001
       - RUST_LOG=${RUST_LOG}
       - TEST_POOL_IP=${TEST_POOL_IP}
     ports:
@@ -166,24 +166,24 @@ services:
       - node2
       - node3
       - node4
-      - alice
+      - naufal
     networks:
       services:
         ipv4_address: 173.17.0.160
     volumes:
       - node1-data:/home/indy/ledger
 
-  faber:
+  poom:
     image: indy-agentjs
     command: "bash -c 'sleep 10; npm start'"
     environment:
-      - ICON_SRC=https://cdn2.iconfinder.com/data/icons/bubble-education-icons-1/360/School-512.png
-      - THEME=OliveDrab
+      - ICON_SRC=https://github.com/joey8801/img/blob/master/zoom.png?raw=true
+      - THEME=teal
       - PORT=3002
-      - NAME=Faber College
-      - EMAIL=admin@faber.edu
+      - NAME=Poom Corporation
+      - EMAIL=admin@poom.org
       - PASSWORD=123
-      - USERNAME=faber
+      - USERNAME=poom
       - PUBLIC_DID_ENDPOINT=173.17.0.170:3002
       - RUST_LOG=${RUST_LOG}
       - TEST_POOL_IP=${TEST_POOL_IP}
@@ -194,24 +194,24 @@ services:
       - node2
       - node3
       - node4
-      - alice
+      - naufal
     networks:
       services:
         ipv4_address: 173.17.0.170
     volumes:
       - node1-data:/home/indy/ledger
 
-  acme:
+  pnu:
     image: indy-agentjs
     command: "bash -c 'sleep 10; npm start'"
     environment:
-      - ICON_SRC=https://i.ytimg.com/vi/JUMufld7UcY/maxresdefault.jpg
-      - THEME=LightSteelBlue
+      - ICON_SRC=https://github.com/joey8801/img/blob/master/university.png?raw=true
+      - THEME=teal
       - PORT=3003
-      - NAME=Acme Corporation
-      - EMAIL=boss@acme.com
+      - NAME=Pusan National University
+      - EMAIL=admin@pusan.ac.kr
       - PASSWORD=123
-      - USERNAME=acme
+      - USERNAME=pnu
       - PUBLIC_DID_ENDPOINT=173.17.0.180:3003
       - RUST_LOG=${RUST_LOG}
       - TEST_POOL_IP=${TEST_POOL_IP}
@@ -222,24 +222,24 @@ services:
       - node2
       - node3
       - node4
-      - alice
+      - naufal
     networks:
       services:
         ipv4_address: 173.17.0.180
     volumes:
       - node1-data:/home/indy/ledger
 
-  thrift:
+  msit:
     image: indy-agentjs
     command: "bash -c 'sleep 10; npm start'"
     environment:
-      - ICON_SRC=http://www.psdgraphics.com/file/bank-building-icon.jpg
-      - THEME=Coral
+      - ICON_SRC=https://github.com/joey8801/img/blob/master/goverment.png?raw=true
+      - THEME=teal
       - PORT=3004
-      - NAME=Thrift Bank
-      - EMAIL=owner@thrift.com
+      - NAME=Ministry of Science and ICT
+      - EMAIL=admin@msit.org
       - PASSWORD=123
-      - USERNAME=thrift
+      - USERNAME=msit
       - PUBLIC_DID_ENDPOINT=173.17.0.190:3004
       - RUST_LOG=${RUST_LOG}
       - TEST_POOL_IP=${TEST_POOL_IP}
@@ -250,7 +250,7 @@ services:
       - node2
       - node3
       - node4
-      - alice
+      - naufal
     networks:
       services:
         ipv4_address: 173.17.0.190

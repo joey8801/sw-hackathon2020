@@ -17,13 +17,14 @@
                     <option value="proofRequestOther">Other (Paste Proof Request Here) --></option>
                 </select>
                 <br><br>
-                <input class="w3-btn w3-white w3-border" type="submit">
+                <input class="w3-btn w3-teal w3-border" type="submit" value="submit">
             </div>
         </div>
         <div class="w3-half">
             <%for(let pr of Object.keys(proofRequests)) {%>
-                <div id="<%=proofRequests[pr].name%>" class="proofRequestsClass" style="width:100%;display:none;">
-                    <textarea style="width:100%;" rows="20" readonly><%=proofRequests[pr].string%></textarea>
+                <h3 class="w3-bar w3-border" style="width:100%;text-align: center;color: white;margin-top: 15px;margin-bottom:0px;padding:10px">proofRequest</h3>
+                <div id="<%=proofRequests[pr].name%>" class="proofRequestsClass" style="width:100%;display:light-gray; margin-right: 30px">
+                    <textarea style="width:100%;padding:30px" rows="20" readonly><%=proofRequests[pr].string%></textarea>
                 </div>
             <%}%>
             <div id="proofRequestOther" class="proofRequestsClass" style="width:100%;display:none;">

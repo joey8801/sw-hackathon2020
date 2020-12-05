@@ -21,8 +21,8 @@ const config = {
     userInformation: {
         name: process.env.NAME || 'Naufal',
         email: process.env.EMAIL || 'naufal@islab.re.kr',
-        tax_id: process.env.TAX_ID || '123-45-6789',
-        icon_src: process.env.ICON_SRC || 'https://cdn3.iconfinder.com/data/icons/black-easy/512/538738-school_512x512.png',
+        tax_id: process.env.TAX_ID || '849-23-5748',
+        icon_src: process.env.ICON_SRC || 'https://github.com/joey8801/img/blob/master/mist2.png?raw=true',
         username: process.env.USERNAME || 'naufal',
         password: process.env.PASSWORD || '123'
     },
