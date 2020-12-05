@@ -38,8 +38,8 @@
                         <%if(relationship.metadata.proofs) {%>
                             <%for(let proof of relationship.metadata.proofs) {%>
                                 <div class="w3-bar w3-card">
-                                    <div class="w3-bar-item">
-                                        <p style="text-decoration: underline;"><%=proof.request.name%></p>
+                                    <div class="w3-bar-item" style="text-align:center;margin-top:20px;margin-left:20px">
+                                        <h4 style="text-decoration: underline;color:white"><%=proof.request.name%></></h4>
                                         <%for(let attr of Object.keys(proof.request.requested_attributes)) {%>
                                             <p><%=proof.request.requested_attributes[attr].name%>: <%=proof.requested_proof.revealed_attrs[attr].raw%></p>
                                         <%}%>
